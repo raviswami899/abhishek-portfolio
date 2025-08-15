@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Abhishek Swami - Medical Professional & Content Strategist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0d4a9e;
+            --secondary: #1a6dcc;
+            --accent: #0db4cc;
+            --light: #f5f7fa;
+            --dark: #2d3748;
+            --success: #2ecc71;
+            --gray: #718096;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 74, 158, 0.85), rgba(13, 74, 158, 0.9)), url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            font-size: 1.25rem;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 1rem auto 0;
+        }
+        
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        /* Summary Section */
+        .summary-content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .summary-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        .summary-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark);
+        }
+        
+        /* Education & Experience */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+        
+        .timeline-content {
+            width: calc(50% - 40px);
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -50px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -50px;
+        }
+        
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-category h3 i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 5px;
+        }
+        
+        /* Achievements */
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .achievement-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+        
+        .achievement-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        /* Languages */
+        .languages-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .language-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .language-flag {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                justify-content: flex-start !important;
+                padding-left: 60px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-content::before {
+                left: -50px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-item {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-user-md"></i>
+                <h1>Dr. Abhishek <span>Swami</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#summary">Summary</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Medical Professional & Content Strategist</h2>
+            <p>3rd-year MBBS student at PGIMS Rohtak with expertise in medical content creation, strategy, and management for healthcare professionals.</p>
+            
+            <div class="contact-icons">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>7988454202</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:abhishekhkumarhr@gmail.com">abhishekhkumarhr@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Rohtak, Haryana</span>
+                </div>
+                <!-- <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="linkedin.com/in/dr-abhishek-swami-98425b311" target="_blank">LinkedIn Profile</a>
+                </div> -->
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/dr-abhishek-swami-98425b311" target="_blank" rel="noopener noreferrer">
+                        LinkedIn Profile
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Summary -->
+    <section id="summary">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Summary</h2>
+                <p>A passionate medical student with a strong interest in entrepreneurship in healthcare</p>
+            </div>
+            
+            <div class="summary-content">
+                <p>A 3rd-year MBBS student at PGIMS Rohtak with a strong interest in entrepreneurship in the medical field. Quick learner with hands-on experience in content strategy and management for healthcare professionals. Skilled in medical content creation, editing, and basic patient handling.</p>
+                <p>I combine my medical knowledge with digital content expertise to help healthcare professionals build their online presence and engage with wider audiences effectively.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p>My academic journey in medical education</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - Present</div>
+                        <h3 class="timeline-title">MBBS (Ongoing)</h3>
+                        <p>Post Graduate Institute of Medical Sciences (PGIMS), Rohtak</p>
+                        <p>Currently in my 3rd year of medical studies, gaining comprehensive knowledge and practical experience in medical sciences.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <h3 class="timeline-title">NEET Examination</h3>
+                        <p>Cleared with 606 marks</p>
+                        <p>Achieved an excellent score in the National Eligibility cum Entrance Test, securing admission to a prestigious medical institution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Experience</h2>
+                <p>Content strategy and management roles in healthcare</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">6 Months</div>
+                        <h3 class="timeline-title">Senior Content Strategist</h3>
+                        <p> Dr. Neha PT</p>
+                        <ul>
+                            <li>Designed and executed content plans for medical education</li>
+                            <li>Developed physiotherapy awareness content strategies</li>
+                            <li>Created engaging educational materials for diverse audiences</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1 Year</div>
+                        <h3 class="timeline-title">Content Manager</h3>
+                        <p> Dr. Parth Goyal</p>
+                        <ul>
+                            <li>Managed end-to-end content creation and scheduling</li>
+                            <li>Developed engagement strategies for social media platforms</li>
+                            <li>Coordinated content production across multiple formats</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills & Expertise</h2>
+                <p>Technical, medical and soft skills</p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-medical"></i> Technical Skills</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-video"></i> Video Editing</h3>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span>CapCut</span>
+                                    <span>Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span>DaVinci Resolve 18</span>
+                                    <span>Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-stethoscope"></i> Medical Skills</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-user-injured"></i> Patient Care</h3>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span>Patient Handling</span>
+                                    <span>Proficient</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> Soft Skills</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Content Strategy</span>
+                                <span>Expert</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Communication</span>
+                                <span>Expert</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Adaptability</span>
+                                <span>Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Time Management</span>
+                                <span>Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2>Achievements</h2>
+                <p>Notable accomplishments in my career</p>
+            </div>
+            
+            <div class="achievements-container">
+                <div class="card">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>NEET 2022</h3>
+                        <p>Cleared with 606 marks</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>100K Followers</h3>
+                        <p>Helped Dr. Parth Goyal grow to 100K+ followers</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>40K Followers</h3>
+                        <p>Helped Dr. Neha PT grow to 40K+ followers</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Top Creators</h3>
+                        <p>Worked with top medical content creators to reach large audiences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages -->
+    <section id="languages" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Languages</h2>
+                <p>Communication skills in multiple languages</p>
+            </div>
+            
+            <div class="languages-container">
+                <div class="language-item">
+                    <div class="language-flag">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Hindi</h3>
+                    <p>Fluent</p>
+                </div>
+                
+                <div class="language-item">
+                    <div class="language-flag">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>English</h3>
+                    <p>Fluent</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Dr. Abhishek Swami</h3>
+                    <p>Medical Student & Content Strategist dedicated to bridging healthcare knowledge and digital communication.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:abhishekhkumarhr@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:7988454202"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
+                        <li style="margin-bottom: 0.75rem;"><a href="#summary" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Professional Summary</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#education" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Education</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#experience" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Experience</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#skills" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Skills</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#achievements" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Achievements</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p style="margin-bottom: 0.75rem; display: flex; align-items: center;"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Rohtak, Haryana</p>
+                    <p style="margin-bottom: 0.75rem; display: flex; align-items: center;"><i class="fas fa-phone" style="margin-right: 10px;"></i> 7988454202</p>
+                    <p style="margin-bottom: 0.75rem; display: flex; align-items: center;"><i class="fas fa-envelope" style="margin-right: 10px;"></i> abhishekhkumarhr@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Dr. Abhishek Swami. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add animation to elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.timeline-content, .card, .summary-content').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
